@@ -2,7 +2,7 @@ package com.info.demo.service.impl;
 
 import com.info.demo.model.Organization;
 import com.info.demo.repository.OrganizationRepository;
-import com.info.demo.service.OrganizationService;
+import com.info.demo.service.organization.OrganizationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

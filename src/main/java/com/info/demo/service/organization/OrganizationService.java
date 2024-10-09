@@ -1,4 +1,4 @@
-package com.info.demo.service;
+package com.info.demo.service.organization;
 
 import com.info.demo.model.Organization;
 

@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -21,13 +21,21 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    private String password;
-
-    @ManyToOne
-    private Organization organization;
+    private String password; //1234
 
     private String roleType;
 
     private boolean isAdmin= false;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roleType='" + roleType + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
+    }
 }

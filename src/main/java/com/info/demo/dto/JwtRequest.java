@@ -1,4 +1,4 @@
-package com.info.demo.viewModel;
+package com.info.demo.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
