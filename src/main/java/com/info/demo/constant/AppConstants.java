@@ -14,6 +14,7 @@ public class AppConstants {
     public static final String HEADER = "Authorization";
     public static final String PREFIX = "Bearer ";
     public static final String LOGIN_PATH = "/api/v1/login";
+    public static final String PUBLIC_PATH = "/api/v1/public";
     public static final String REGISTRATION_PATH = "/api/v1/users/registration";
     public static final String SYSTEM_EMAIL = "manik.mmanik@gmail.com";
     public static final String EMAIL_SUBJECT = "Welcome to Square Bear";
@@ -30,7 +31,8 @@ public class AppConstants {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             LOGIN_PATH,
-            REGISTRATION_PATH
+            REGISTRATION_PATH,
+            PUBLIC_PATH
     };
 
     public static final String USER_REGISTERED_SUCCESS = "User saved successfully.";

@@ -32,18 +32,19 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public JwtResponse login(JwtRequest authenticationRequest) throws Exception {
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        Authentication authenticate = authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
+//        final String token = jwtTokenUtil.generateToken((UserDetails) authenticate.getPrincipal());
         Optional<User> user = userService.findByUserName(authenticationRequest.getUsername());
         user.get().setPassword(null);
         kafkaTemplate.send(AppConstants.MESSAGE_TOPIC, AppConstants.LOGIN_SUCCESS);
         return new JwtResponse(user.get(), token);
     }
 
-    private void authenticate(String username, String password) throws Exception {
+    private Authentication authenticate(String username, String password) throws Exception {
         try {
-            Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
